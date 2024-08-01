@@ -36,7 +36,7 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Green,
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()

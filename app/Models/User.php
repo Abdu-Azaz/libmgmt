@@ -54,4 +54,13 @@ class User extends Authenticatable implements FilamentUser
         ;
     }
 
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }
