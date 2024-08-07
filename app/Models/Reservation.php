@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'book_id'];
+    protected $fillable = ['student_id', 'book_id'];
 
 
     public function book()
@@ -17,8 +17,8 @@ class Reservation extends Model
         return $this->belongsTo(Book::class);
     }
 
-    public function user()
+    public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Student::class);
     }
 }

@@ -20,4 +20,9 @@ class Book extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function reservedCount()
+{
+    return $this->reservations()->count();
+}
 }

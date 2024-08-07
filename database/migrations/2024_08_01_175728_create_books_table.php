@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('inventory_number', 100)->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->unsignedSmallInteger('quantity');   
-            $table->string('cover', 100)->nullable();
+            $table->string('cover', 100)->nullable()->default('booksCovers/default.png');
             $table->string('author', 100)->nullable();
             $table->mediumText('description')->nullable();
             $table->timestamps();

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use App\Filament\Pages\EditProfile;
 use App\Models\User;
 use Filament\Http\Middleware\Authenticate;
@@ -35,11 +36,26 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->passwordReset()
             ->profile()
+            
             ->colors([
                 'primary' => Color::Green,
             ])
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()->gridColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                    'lg' => 2
+                ])
+                ->sectionColumnSpan(1)
+                ->checkboxListColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                    'lg' => 2,
+                ])
+                ->resourceCheckboxListColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                ]),
 
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

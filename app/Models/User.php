@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -14,9 +15,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-    use HasPanelShield;
-
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPanelShield;
+ 
     /**
      * The attributes that are mass assignable.
      *
@@ -47,20 +47,23 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
+  
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@uiz.ac.ma')
-        // && $this->hasVerifiedEmail()
-        ;
+        return str_ends_with($this->email, '@uiz.ac.ma');
+     
+        // return true;
     }
 
-
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
+    // public function reservations()
+    // {
+    //     return $this->hasMany(Reservation::class);
+    // }
     public function student()
     {
         return $this->hasOne(Student::class);
     }
+
+    
+    
 }

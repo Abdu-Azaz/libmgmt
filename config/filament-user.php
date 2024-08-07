@@ -16,7 +16,7 @@ return [
     /*
      * User Filament Impersonate
      */
-    "impersonate" => true,
+    "impersonate" => false,
 
     /*
      * User Filament Shield
